@@ -28,7 +28,7 @@ npm run build:mac-arm64   # Apple Silicon
 npm run build:mac-x64     # Intel
 ```
 
-(or double-click `build.command`). Result is in `dist/`. The app is not signed: on first launch right-click ACAS.app → **Open**, or run `xattr -dr com.apple.quarantine /Applications/ACAS.app`.
+(or double-click `build.command`). Result is in `dist/`. The app is only ad-hoc signed (no Apple Developer ID), so Gatekeeper blocks a downloaded copy. After copying it to Applications run `xattr -dr com.apple.quarantine /Applications/ACAS.app`.
 
 ## Loading your own engines
 

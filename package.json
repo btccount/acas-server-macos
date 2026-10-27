@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "electron .",
 		"build": "electron-builder --publish never",
-		"build:mac": "electron-builder --mac --publish never",
+		"build:mac": "electron-builder --mac --arm64 --x64 --publish never",
 		"build:mac-arm64": "electron-builder --mac --arm64 --publish never",
 		"build:mac-x64": "electron-builder --mac --x64 --publish never"
 	},
@@ -44,20 +44,8 @@
 			"icon": "ui/images/icon.png",
 			"category": "public.app-category.utilities",
 			"target": [
-				{
-					"target": "dmg",
-					"arch": [
-						"arm64",
-						"x64"
-					]
-				},
-				{
-					"target": "zip",
-					"arch": [
-						"arm64",
-						"x64"
-					]
-				}
+				"dmg",
+				"zip"
 			],
 			"identity": null,
 			"hardenedRuntime": false,
@@ -65,6 +53,7 @@
 		},
 		"dmg": {
 			"title": "ACAS ${version}"
-		}
+		},
+		"afterPack": "build/adhoc-sign.cjs"
 	}
 }
